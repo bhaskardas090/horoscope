@@ -1,0 +1,23 @@
+.zodiacs{
+  width: 100vw;
+  display: grid;
+  place-items: center;
+}
+.zodiacsHeader{
+  font-size: 32px;
+  font-weight: 200;
+  margin: 50px 0;
+}
+.zodiacsContainer{
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.zodiac{
+  transition: all 0.3s ease-in-out;
+  justify-self: center;
+}
+.zodiac:hover{
+  transform: scale(0.9)
+}

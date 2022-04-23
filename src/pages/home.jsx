@@ -1,10 +1,12 @@
 import React from 'react'
-
-const home = () => {
+import Zodiacs from '../component/Zodiacs';
+import styles from './home.module.css';
+const Home = () => {
   return (
-    <div >
+    <div className={styles.styles}>
+      <Zodiacs/>
     </div>
   )
 }
 
-export default home
+export default Home
