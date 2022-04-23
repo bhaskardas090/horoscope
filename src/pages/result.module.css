@@ -1,0 +1,89 @@
+.result{
+  width: 100vw;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  overflow-y: hidden;
+}
+.resutlContainer{
+  width: 50%;
+  display: grid;
+}
+
+.zodiacType{
+   font-size: 46px;
+   font-weight: 900;
+}
+.dateRange{
+  font-size: 20px;
+  color: #F9C85A;
+  margin: 10px 0;
+}
+.todayDate{
+  font-size:20px;
+  color: #F6CCCC;
+}
+
+
+.description{
+  padding: 50px;
+  font-size: 26px;
+  background-color: #DEE1F6;
+  border-radius: 10px;
+  margin: 40px 0;
+}
+
+.details{
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+.compatibility, .mood, .color, .luckyNumber, .luckyTime{
+  font-size: 20px;
+  margin: 15px 0;
+  background-color: #F5DEC6;
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.buttons{
+  display: flex;
+  justify-content:space-around;
+
+}
+.tomorrow,.yesterday{
+  width: 200px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.tomorrow{
+  background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);      
+  bottom: 0;
+  right: 50px;
+}
+.tomorrow:hover, .yesterday:hover{
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+.yesterday{
+  background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
+  bottom: 0;
+  left: 50px;
+}
