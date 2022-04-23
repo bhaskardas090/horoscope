@@ -1,0 +1,14 @@
+.logo{
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoImg{
+  transition: all 0.3s ease-in-out;
+}
+.logoImg:hover{
+  transform: scale(1.2);
+}
