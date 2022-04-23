@@ -6,11 +6,9 @@
   text-align: center;
   justify-content: center;
   position: relative;
-  overflow-y: hidden;
 }
 .resutlContainer{
-  width: 50%;
-  display: grid;
+  width: 700px;
 }
 
 .zodiacType{
@@ -86,4 +84,37 @@
   background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
   bottom: 0;
   left: 50px;
+}
+
+
+/* RESPONSIVE DESIGN */
+
+@media only screen and (max-width: 425px) {
+  .description{
+    font-size: 24px;
+    padding: 0 180px;
+    margin-top: 100px;
+    background-color:transparent;
+  }
+  .dateRange,.todayDate{
+    display: inline;
+    margin: 0 20px;
+  }
+  .details{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .tomorrow,.yesterday{
+    width: 140px;
+    height: 40px;
+    font-size: 10px;
+    text-align: center;
+    top: 13%;
+  }
+  .tomorrow{
+    right: 0;
+  }
+  .yesterday{
+    left: 0;
+  }
 }

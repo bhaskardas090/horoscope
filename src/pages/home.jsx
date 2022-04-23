@@ -22,14 +22,14 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <div className={styles.inputs}> 
-        <span className="p-input-icon-left">
+        <div className="p-input-icon-left">
             <i className="pi pi-user" />
             <InputText value={name} onChange={(e) => setName(e.target.value)} placeholder="Bhaskar Das" className={styles.input}/>
-          </span>
-          <span className="p-input-icon-left">
+        </div>
+        <div className="p-input-icon-left">
             <i className="pi pi-google" />
             <InputText value={email} onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com" className={styles.input}/>
-          </span>
+        </div>
       </div>
       <h1 className={styles.zodiacsHeader}>Choose Your Zodiac Sign</h1>
       <div className={styles.zodiacsContainer}>
