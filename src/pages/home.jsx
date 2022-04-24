@@ -22,7 +22,6 @@ const Home = () => {
   const [email, setEmail] = useState("");
   const [sign, setSign] = useState("gemini")
   const [loading, setLoading] = useState(false)
-  const [result, setResult] = useState(JSON.parse(sessionStorage.getItem('result')));
   
   const options = {
       method: 'POST',
@@ -38,12 +37,12 @@ const Home = () => {
     setLoading(true);
     const getdata = async() => {
       const {data} = await axios.request(options);
-      setResult(data);
+      // setResult(data);
 
       if(data){
-      sessionStorage.setItem('result', JSON.stringify(data));
-      setLoading(false)
-      navigate('/result', { replace: true })
+        sessionStorage.setItem('result', JSON.stringify({...data, sign}));
+        setLoading(false)
+        navigate('/result', { replace: true })
       }
       sessionStorage.setItem('loading', JSON.stringify(loading));
     }

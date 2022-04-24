@@ -118,3 +118,12 @@
     left: 0;
   }
 }
+
+.loading{
+  font-size: 80px;
+  width: 100vw;
+  height: calc(100vh - 100px);
+  display: grid;
+  place-items: center;
+}
+

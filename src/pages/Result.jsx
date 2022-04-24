@@ -1,18 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './result.module.css';
 const Result = () => {
+  const [loading, setLoading] = useState(false)
+  const [result, setResult] = useState(JSON.parse(sessionStorage.getItem('result')));
+
   return (
-    <div className={styles.result}>
+    loading ? (
+      <h1 className={styles.loading}>Loading...</h1>
+    ):(
+      <div className={styles.result}>
       <div className={styles.resutlContainer}>
-        <h1 className={styles.zodiacType}>Sagittarius</h1>
-        <p className={styles.dateRange}>Oct 23 - Nov 22</p>
-        <p className={styles.todayDate}>April 23, 2022</p>
-        <div className={styles.description}>It's not like you're famous for self-control to start with -- but now? Well, at this moment in time, you'll be less willing to try. Needless to say, this is a potentially startling situation, especially for those around you.</div>
+        <h1 className={styles.zodiacType}>{result.sign}</h1>
+        <p className={styles.dateRange}>{result.date_range}</p>
+        <p className={styles.todayDate}>{result.current_date}</p>
+        <div className={styles.description}>{result.description}</div>
         <div className={styles.details}>
-          <div className={styles.compatibility}>Compatibility: Cancer</div>
-          <div className={styles.mood}>Mood: Cautious</div>
-          <div className={styles.color}>Color: Spring Green</div>
-          <div className={styles.luckyNumber}>Lucky Number: 48</div>
+          <div className={styles.compatibility}>Compatibility: {result.compatibility}</div>
+          <div className={styles.mood}>Mood: {result.mood}</div>
+          <div className={styles.color}>Color: {result.color}</div>
+          <div className={styles.luckyNumber}>Lucky Number: {result.lucky_number}</div>
         </div>
         <div className={styles.buttons}>
           <button className={styles.yesterday}>Yesterday</button>
@@ -20,6 +26,8 @@ const Result = () => {
         </div>
       </div>
     </div>
+    )
+    
   )
 }
 
