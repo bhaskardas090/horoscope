@@ -9,6 +9,9 @@ const Home = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [user, setUser] = useState({
+    name: "", email: "",
+  })
   const [sign, setSign] = useState("")
   const [loading, setLoading] = useState(false)
   const [selected, setSelected] = useState()
@@ -30,17 +33,35 @@ const Home = () => {
   }
 
   const handleSubmit = () => {
+    // SIMPLE FORM VALIDATION
+    if(name.length === 0){
+       alert("Enter your Name");
+       return;
+    }
+    if(email.length === 0){
+       alert("Enter a valid Email");
+       return;
+    }
+    if(sign.length === 0) {
+      alert("Select a Zodiac Sign")
+      return;
+    }
     setLoading(true);
-    // GETTING DATA 
+    // SETING USER STATE DATA
+    const newUser = {...user};
+    newUser.name = name;
+    newUser.email = email;
+    setUser(newUser);
+    // FETCHING DATA FRO API
     const getdata = async() => {
       const {data} = await axios.request(options);
       if(data){
         sessionStorage.setItem('result', JSON.stringify({...data, sign}));
         setLoading(false)
       }
-    // REDIRECTING & SAVING USER DATA
+    // REDIRECTING USR & SAVING USER DATA IN STORAGE
       navigate('/result', { replace: true })
-      sessionStorage.setItem('user', JSON.stringify({name, email}));
+      sessionStorage.setItem('user', JSON.stringify(newUser));
     }
     getdata();
   }
