@@ -18,11 +18,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
   const [selected, setSelected] = useState()
   
-  const days = [
-    { name: 'today'},
-    { name: 'yesterday'},
-    { name: 'tomorrow'},
-  ]
+  const days = ['today','yesterday','tomorrow'];
   const options = {
       method: 'POST',
       url: 'https://sameer-kumar-aztro-v1.p.rapidapi.com/',
@@ -34,8 +30,8 @@ const Home = () => {
     };
 
   const onDayChange = (e) => {
-    setDay(e.target.value.name);
-    console.log(e.target.value.name);
+    setDay(e.target.value);
+    console.log(e.target.value);
   }
   const handleZodiac = (e,id) => {
     setSign(e.target.alt)
@@ -101,7 +97,7 @@ const Home = () => {
             className={styles.input}
           />
         </div>
-        <Dropdown value={day} onChange={onDayChange} options={days}  optionLabel="name" placeholder="Select Day" />
+        <Dropdown value={day} onChange={onDayChange} options={days} placeholder="Select Day" />
       </div>
       <h1 className={styles.zodiacsHeader}>Choose Your Zodiac Sign</h1>
       <div className={styles.zodiacsContainer}>
