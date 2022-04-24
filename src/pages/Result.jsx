@@ -19,10 +19,10 @@ const Result = () => {
           <div className={styles.color}>Color: {result.color}</div>
           <div className={styles.luckyNumber}>Lucky Number: {result.lucky_number}</div>
         </div>
-        <div className={styles.buttons}>
+        {/* <div className={styles.buttons}>
           <button className={styles.yesterday}>Yesterday</button>
           <button className={styles.tomorrow}>Tomorrow</button>
-        </div>
+        </div> */}
       </div>
     </div>
     )
