@@ -10,8 +10,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 const App = () => {
   return (
     <div className="App">
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/result" element={<Result />} />
