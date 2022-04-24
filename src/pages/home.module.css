@@ -70,3 +70,8 @@
   }
 
 }
+
+.selected{
+  border: 2px solid teal;
+  padding: 10px;
+}

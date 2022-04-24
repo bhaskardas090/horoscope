@@ -1,16 +1,5 @@
-import {useEffect, useState, useMemo} from 'react';
-import aries from '../img/aries.png';
-import aquarius from '../img/aquarius.png';
-import cancer from '../img/cancer.png';
-import capricorn from '../img/capricorn.png';
-import leo from '../img/leo.png';
-import scorpio from '../img/scorpio.png';
-import libra from '../img/libra.png';
-import pisces from '../img/pisces.png';
-import sagittarius from '../img/sagittarius.png';
-import gemini from '../img/gemini.png';
-import taurus from '../img/taurus.png';
-import virgo from '../img/virgo.png';
+import {useState} from 'react';
+import {zodiacImages} from '../data';
 import styles from './home.module.css';
 import { InputText } from 'primereact/inputtext';
 import { useNavigate } from 'react-router-dom'
@@ -20,8 +9,9 @@ const Home = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [sign, setSign] = useState("gemini")
+  const [sign, setSign] = useState("")
   const [loading, setLoading] = useState(false)
+  const [selected, setSelected] = useState()
   
   const options = {
       method: 'POST',
@@ -33,52 +23,71 @@ const Home = () => {
       }
     };
 
+
+  const handleZodiac = (e,id) => {
+    setSign(e.target.alt)
+    setSelected(id)
+  }
+
   const handleSubmit = () => {
     setLoading(true);
+    // GETTING DATA 
     const getdata = async() => {
       const {data} = await axios.request(options);
-      // setResult(data);
-
       if(data){
         sessionStorage.setItem('result', JSON.stringify({...data, sign}));
         setLoading(false)
-        navigate('/result', { replace: true })
       }
-      sessionStorage.setItem('loading', JSON.stringify(loading));
+    // REDIRECTING & SAVING USER DATA
+      navigate('/result', { replace: true })
+      sessionStorage.setItem('user', JSON.stringify({name, email}));
     }
     getdata();
   }
 
   return (
     <div className={styles.home}>
-      <div className={styles.inputs}> 
+      <div className={styles.inputs}>
         <div className="p-input-icon-left">
-            <i className="pi pi-user" />
-            <InputText value={name} onChange={(e) => setName(e.target.value)} placeholder="Bhaskar Das" className={styles.input}/>
+          <i className="pi pi-user" />
+          <InputText
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Bhaskar Das"
+            className={styles.input}
+          />
         </div>
         <div className="p-input-icon-left">
-            <i className="pi pi-google" />
-            <InputText value={email} onChange={(e) => setEmail(e.target.value)} placeholder="example@gmail.com" className={styles.input}/>
+          <i className="pi pi-google" />
+          <InputText
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="example@gmail.com"
+            className={styles.input}
+          />
         </div>
       </div>
       <h1 className={styles.zodiacsHeader}>Choose Your Zodiac Sign</h1>
-      <div className={styles.zodiacsContainer} onClick={(e) => setSign(e.target.alt)}>
-        <img src={aries} alt="aries" className={styles.zodiac}/>
-        <img src={aquarius} alt="aquarius" className={styles.zodiac}/>
-        <img src={cancer} alt="cancer" className={styles.zodiac}/>
-        <img src={capricorn} alt="capricorn" className={styles.zodiac}/>
-        <img src={leo} alt="leo" className={styles.zodiac}/>
-        <img src={scorpio} alt="scorpio" className={styles.zodiac}/>
-        <img src={libra} alt="libra" className={styles.zodiac}/>
-        <img src={pisces} alt="pisces" className={styles.zodiac}/>
-        <img src={sagittarius} alt="sagittarius" className={styles.zodiac}/>
-        <img src={gemini} alt="gemini" className={styles.zodiac}/>
-        <img src={taurus} alt="taurus" className={styles.zodiac}/>
-        <img src={virgo} alt="virgo" className={styles.zodiac}/>
+      <div className={styles.zodiacsContainer}>
+        {zodiacImages.map((zodiac) => (
+          <img
+            onClick={(e) => handleZodiac(e, zodiac.id)}
+            key={zodiac.id}
+            src={zodiac.path}
+            alt={zodiac.alt}
+            className={
+              selected === zodiac.id
+                ? `${styles.zodiac} ${styles.selected}`
+                : `${styles.zodiac}`
+            }
+          />
+        ))}
       </div>
-      <button className={styles.submit} onClick={handleSubmit}>Show My Horoscope</button>
+      <button className={styles.submit} onClick={handleSubmit}>
+        {loading ? 'Loading...' : 'Show My Horoscope'}
+      </button>
     </div>
-  )
+  );
 }
 
 export default Home

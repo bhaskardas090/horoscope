@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
 import styles from './result.module.css';
 const Result = () => {
-  const [loading, setLoading] = useState(false)
   const [result, setResult] = useState(JSON.parse(sessionStorage.getItem('result')));
 
   return (
-    loading ? (
-      <h1 className={styles.loading}>Loading...</h1>
+    result.length ? (
+      <h1 className={styles.loading}>Nothing to show :(</h1>
     ):(
       <div className={styles.result}>
       <div className={styles.resutlContainer}>
