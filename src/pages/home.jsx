@@ -20,14 +20,17 @@ const Home = () => {
   
   const days = ['today','yesterday','tomorrow'];
   const options = {
-      method: 'POST',
-      url: 'https://sameer-kumar-aztro-v1.p.rapidapi.com/',
-      params: {sign: sign, day: day},
-      headers: {
-        'X-RapidAPI-Host': 'sameer-kumar-aztro-v1.p.rapidapi.com',
-        'X-RapidAPI-Key': 'de9e63ce4cmshcb1237b75a732eap197588jsn7d2dc5322ad8'
-      }
-    };
+    method: 'GET',
+    url: 'https://horostory.p.rapidapi.com/horoscope',
+    params: {
+      sign: sign,
+      date: day
+    },
+    headers: {
+      'X-RapidAPI-Key': 'de9e63ce4cmshcb1237b75a732eap197588jsn7d2dc5322ad8',
+      'X-RapidAPI-Host': 'horostory.p.rapidapi.com'
+    }
+  };
 
   const onDayChange = (e) => {
     setDay(e.target.value);

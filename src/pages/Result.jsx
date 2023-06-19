@@ -10,14 +10,14 @@ const Result = () => {
       <div className={styles.result}>
       <div className={styles.resutlContainer}>
         <h1 className={styles.zodiacType}>{result.sign}</h1>
-        <p className={styles.dateRange}>{result.date_range}</p>
-        <p className={styles.todayDate}>{result.current_date}</p>
+        {/* <p className={styles.dateRange}>{result.date_range}</p> */}
+        <p className={styles.todayDate}>{result.currentDate}</p>
         <div className={styles.description}>{result.description}</div>
         <div className={styles.details}>
           <div className={styles.compatibility}>Compatibility: {result.compatibility}</div>
           <div className={styles.mood}>Mood: {result.mood}</div>
           <div className={styles.color}>Color: {result.color}</div>
-          <div className={styles.luckyNumber}>Lucky Number: {result.lucky_number}</div>
+          <div className={styles.luckyNumber}>Lucky Number: {result.luckyNumber}</div>
         </div>
         {/* <div className={styles.buttons}>
           <button className={styles.yesterday}>Yesterday</button>
