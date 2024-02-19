@@ -1,11 +1,11 @@
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import './App.css';
-import Navbar from './component/Navbar';
-import Home from './pages/Home';
-import Result from './pages/Result';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "./App.css";
+import Navbar from "./component/Navbar";
+import Home from "./pages/home";
+import Result from "./pages/Result";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
